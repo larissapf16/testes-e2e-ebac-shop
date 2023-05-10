@@ -16,41 +16,28 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
     });
     it('Finaliza compra dos produtos com sucesso', () => {
 
-        cy.produto('Abominable Hoodie', 'M', 'Green')//Produto1
-        cy.wait(70000)
-        cy.get('.input-text').clear().type(1) //clear no campo quantidade
-        cy.get('.single_add_to_cart_button').click() //botão comprar
-        
+        cy.produto('Abominable Hoodie', 'M', 'Green', '1')//Produto1
 
+        cy.wait(70000)
         cy.get('#primary-menu > .menu-item-629 > a').click() //clicar no menu comprar
         cy.get(':nth-child(2) > .page-numbers').click() // clicar página 2
-        
-        
-        cy.produto2('Balboa Persistence Tee', 'L', 'Gray')//Produto2
-        cy.wait(70000)
-        cy.get('.input-text').clear().type(1) //clear no campo quantidade
-        cy.get('.single_add_to_cart_button').click() //botão comprar
-        cy.wait(70000)
 
+        cy.produto('Balboa Persistence Tee', 'L', 'Gray', '1')//Produto1
+
+        cy.wait(70000)
         cy.get('#primary-menu > .menu-item-629 > a').click() //clicar no menu comprar
         cy.get(':nth-child(2) > .page-numbers').click() // clicar página 2
-        
-        
-       /* cy.produto3('Atomic Endurance Running Tee (Crew-Neck)', 'L', 'Black')//Produto 3
-        cy.wait(70000)
-        cy.get('.input-text').clear().type(1) //clear no campo quantidade
-        cy.get('.single_add_to_cart_button').click() //botão comprar
-        cy.wait(70000)
 
+        cy.produto('Atomic Endurance Running Tee (Crew-Neck)', 'L', 'Black', '1')//Produto 3
+
+        cy.wait(70000)
         cy.get('#primary-menu > .menu-item-629 > a').click() //clicar no menu comprar
         cy.get(':nth-child(2) > .page-numbers').click() // clicar na página 2
 
-        cy.produto4('Atomic Endurance Running Tee (Crew-Neck)', 'XL', 'Black')//Produto 4
-        cy.get('.input-text').clear().type(1) //clear no campo quantidade
-        cy.get('.single_add_to_cart_button').click() //botão comprar*/
-
-        cy.get('.dropdown-toggle > .mini-cart-items').should('contain', 2) //verifica se o carrinho contém o produto 
-
+        cy.produto('Atomic Endurance Running Tee (Crew-Neck)', 'XL', 'Black', '1')//Produto 4
+        
+        cy.wait(70000)
+        cy.get('.dropdown-toggle > .mini-cart-items').should('contain', 4) //verifica se o carrinho contém o produto 
 
         cy.get('.dropdown-toggle > .text-skin > .icon-basket').click()
         cy.get('#cart > .dropdown-menu > .widget_shopping_cart_content > .mini_cart_content > .mini_cart_inner > .mcart-border > .buttons > .checkout').click()
